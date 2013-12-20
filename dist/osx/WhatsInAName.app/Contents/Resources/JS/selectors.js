@@ -106,10 +106,10 @@ $("body").on('click',"#close",function(){
 
 //loads content for "gallery", resizing images and moving them to the background.
 $(".content").load(url, function(){
-	pad = parseInt($(".ship_section").css('margin'));
-	var maxWidth = $(this).width()/3-2*pad;
-	var maxHeight = $(this).height()/5;
-	console.log("max: "+maxWidth+"x"+maxHeight);
+//	pad = parseInt($(".ship_section").css('margin'));
+//	var maxWidth = $(this).width()/3-2*pad;
+//	var maxHeight = $(this).height()/5;
+	var maxWidth = 367;
 	
 	$("img").load(function(i){
 		var newCss = {};
@@ -117,24 +117,25 @@ $(".content").load(url, function(){
 		var bgStr = String("url("+imgsrc+")");
 		newCss["background-image"] = bgStr;
 		
-		var scale = 0;
-		var shipWidth = this.width;
-		var shipHeight = this.height;
-	//	scale = (shipWidth > shipHeight) ? maxWidth / shipWidth : maxHeight / shipHeight; //is it landscape or portrait
-		scale =  maxWidth / shipWidth; //is it landscape or portrait
-	//	scale =  maxHeight / maxWidth; 
-		var wide = maxWidth;
-		var high = shipHeight*scale;
-		var line = String(wide)*1.2+"px "+String(high)*1.4+"px";
+
+		
+		newCss.width = maxWidth ;
+		var thisWidth = $(this).width();
+		var scale = maxWidth / thisWidth;
+		
+		
+		var newHeight = scale*$(this).height();
+		newCss.height = newHeight;
+		var line = String(maxWidth)+"px "+String(newHeight)+"px";
+		
 		newCss["background-size"] = line;
-		newCss.height = high*1.4;
-		newCss.width = wide*1.2;
+		
 		newCss.visibility = "visible";
 		newCss.opacity = "1";
 		$(this).parent().css(newCss);
-		$(this).remove();
+		$(this).remove(); 
 	});
-	
+
 	$("div#makeMeScrollable").smoothDivScroll({
 		autoScrollingMode: "onStart",
 		autoScrollingDirection: "endlessLoopRight",
@@ -156,9 +157,35 @@ $(".content").load(url, function(){
 		autoScrollingStep: 4,
 		mousewheelScrollingStep: 90
 	});
-});
 
-$( "#makeMeScrollable" ).mousedown(function() {
+});
+var tmp;
+var buildScroller = function(){
+	tmp = $("div#makeMeScrollable");
+	$("div#makeMeScrollable").smoothDivScroll({
+		autoScrollingMode: "onStart",
+		autoScrollingDirection: "endlessLoopRight",
+		hotSpotScrolling: false,
+		touchScrolling: false,
+		manualContinuousScrolling: true,
+		mousewheelScrolling: false,
+		autoScrollingStep: 5,
+		mousewheelScrollingStep: 90
+	});
+	
+	$("div#makeMeScrollable2").smoothDivScroll({
+		autoScrollingMode: "onStart",
+		autoScrollingDirection: "endlessLoopLeft",
+		hotSpotScrolling: false,
+		touchScrolling: false,
+		manualContinuousScrolling: true,
+		mousewheelScrolling: false,
+		autoScrollingStep: 4,
+		mousewheelScrollingStep: 90
+	});
+}
+
+/*$( "#makeMeScrollable" ).mousedown(function() {
   console.log("Click");
   $("#makeMeScrollable").smoothDivScroll("stopAutoScrolling");
 });
@@ -176,5 +203,4 @@ $( "#makeMeScrollable2" ).mousedown(function() {
 $( "#makeMeScrollable2" ).mouseup(function() {
   console.log("Un-Click");
   $("#makeMeScrollable2").smoothDivScroll("startAutoScrolling");
-});
-
+});*/
