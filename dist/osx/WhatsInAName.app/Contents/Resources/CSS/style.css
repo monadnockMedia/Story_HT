@@ -52,14 +52,13 @@ p {
   padding: .5em;
 }
 .ship_section {
-  position:absolute;
+  position:relative;
   -webkit-transition: 1s opacity;
   opacity: 0;
   visibility: hidden;
   height: auto; /* h: 250   w: 200 */
   width: auto;
   display: inline-block;
-  position: relative;
   color: white;
   text-shadow: 0 0 1px #000000, 0.1em 0.1em 0.1em #000000, -0.05em -0.05em 0.05em #47724f;
 /*  -webkit-box-ordinal-group: 1;
@@ -157,15 +156,32 @@ p {
   width: auto;
   height: auto;
   margin: 1em;
+  margin-left:130px;
 }
-h3.arr {
+h3.arrNext {
+	position:absolute;
+	top:135;
+	left:625;
 	width: 2em;
 	height: 2em;
 	line-height: 2em;
 	padding-left: .5em;
 	border-radius: 1em;
 	background-color: #5ca0ae;
-	box-shadow: inset 0 0 0.125em #000000, 0.125em 0.125em 0.25em rgba(37, 69, 76, 0.5), inset 0.25em 0.25em 0.5em rgba(255, 255, 255, 0.5), inset -0.25em -0.25em 0.5em rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: inset 0 0 0.125em #000000, 0.125em 0.125em 0.25em rgba(37, 69, 76, 0.5), inset 0.25em 0.25em 0.5em rgba(255, 255, 255, 0.5), inset -0.25em -0.25em 0.5em rgba(0, 0, 0, 0.2);
+	text-shadow: 0.05em 0.05em 0.05em rgba(255, 255, 255, 0.5);
+}
+h3.arrPrev {
+	position:absolute;
+	top:135;
+	left:23;
+	width: 2em;
+	height: 2em;
+	line-height: 2em;
+	padding-left: .5em;
+	border-radius: 1em;
+	background-color: #5ca0ae;
+	-webkit-box-shadow: inset 0 0 0.125em #000000, 0.125em 0.125em 0.25em rgba(37, 69, 76, 0.5), inset 0.25em 0.25em 0.5em rgba(255, 255, 255, 0.5), inset -0.25em -0.25em 0.5em rgba(0, 0, 0, 0.2);
 	text-shadow: 0.05em 0.05em 0.05em rgba(255, 255, 255, 0.5);
 }
 #footer {
@@ -300,8 +316,8 @@ svg {
 	font-size:54px;
 	border-radius: 0.2em;
 	background-color: #5ca0ae;
-	box-shadow: inset 0 0 0.125em #000000, 0.125em 0.125em 0.25em rgba(37, 69, 76, 0.5), inset 0.25em 0.25em 0.5em rgba(255, 255, 255, 0.5), inset -0.25em -0.25em 0.5em rgba(0, 0, 0, 0.2);
-	text-shadow: 0.05em 0.05em 0.05em rgba(255, 255, 255, 0.5);
+	-webkit-box-shadow: inset 0 0 0.125em #000000, 0.125em 0.125em 0.25em rgba(37, 69, 76, 0.5), inset 0.25em 0.25em 0.5em rgba(255, 255, 255, 0.5), inset -0.25em -0.25em 0.5em rgba(0, 0, 0, 0.2);
+	-webkit-text-shadow: 0.05em 0.05em 0.05em rgba(255, 255, 255, 0.5);
 }
 #close:active {
 	background-color: #98CCD6;

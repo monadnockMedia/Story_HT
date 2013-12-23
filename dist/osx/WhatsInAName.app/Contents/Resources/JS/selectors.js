@@ -34,7 +34,7 @@ function loadSingle(_id){
 					var newCss = {};
 				newCss["background-image"] = bgStr;
 				console.log("resizing single images");
-				var maxWidth = 500;
+				var maxWidth = 450;
 				var maxHeight = 525;
 
 				var imgsrc = this.src;
@@ -44,7 +44,7 @@ function loadSingle(_id){
 				scale = (imgWidth > imgHeight) ? maxWidth / imgWidth : maxHeight / imgHeight; //is it landscape or portrait
 				var wide = imgWidth*scale;
 				var high = imgHeight*scale;
-				newCss.height = high/1.1;
+				newCss.height = high/1.1; //1.1
 				newCss.width = wide;
 	//			$(this).css(newCss);
 	//			$(this).parent().width(wide);
@@ -84,7 +84,14 @@ function shipclick(){
 
 
 //click handler for arrows in individual section
-$('body').on('click',".arr", function (){
+$('body').on('click',".arrPrev", function (){
+	var dir = ($(this).attr("id") == "prev") ? -1 : 1;
+    var id = parseInt(currentID) + dir;
+	console.log("changing page, direction = "+dir+" next ID = "+id)
+	loadSingle(id);
+});
+
+$('body').on('click',".arrNext", function (){
 	var dir = ($(this).attr("id") == "prev") ? -1 : 1;
     var id = parseInt(currentID) + dir;
 	console.log("changing page, direction = "+dir+" next ID = "+id)
@@ -109,7 +116,10 @@ $(".content").load(url, function(){
 //	pad = parseInt($(".ship_section").css('margin'));
 //	var maxWidth = $(this).width()/3-2*pad;
 //	var maxHeight = $(this).height()/5;
-	var maxWidth = 367;
+	var maxWidth = 500; //367
+	var imgLoadCnt = 0;
+	
+	console.log(".content load")
 	
 	$("img").load(function(i){
 		var newCss = {};
@@ -133,58 +143,56 @@ $(".content").load(url, function(){
 		newCss.visibility = "visible";
 		newCss.opacity = "1";
 		$(this).parent().css(newCss);
-		$(this).remove(); 
+		$(this).remove();
+		
+		imgLoadCnt++;
+		console.log("Image " + imgLoadCnt + " Loaded.");
+		if (imgLoadCnt == 10) {
+			console.log("Start Scroller");
+			buildScroller();
+		}
 	});
-
-	$("div#makeMeScrollable").smoothDivScroll({
-		autoScrollingMode: "onStart",
-		autoScrollingDirection: "endlessLoopRight",
-		hotSpotScrolling: false,
-		touchScrolling: false,
-		manualContinuousScrolling: true,
-		mousewheelScrolling: false,
-		autoScrollingStep: 5,
-		mousewheelScrollingStep: 90
-	});
-	
-	$("div#makeMeScrollable2").smoothDivScroll({
-		autoScrollingMode: "onStart",
-		autoScrollingDirection: "endlessLoopLeft",
-		hotSpotScrolling: false,
-		touchScrolling: false,
-		manualContinuousScrolling: true,
-		mousewheelScrolling: false,
-		autoScrollingStep: 4,
-		mousewheelScrollingStep: 90
-	});
-
 });
-var tmp;
-var buildScroller = function(){
-	tmp = $("div#makeMeScrollable");
-	$("div#makeMeScrollable").smoothDivScroll({
-		autoScrollingMode: "onStart",
-		autoScrollingDirection: "endlessLoopRight",
-		hotSpotScrolling: false,
-		touchScrolling: false,
-		manualContinuousScrolling: true,
-		mousewheelScrolling: false,
-		autoScrollingStep: 5,
-		mousewheelScrollingStep: 90
-	});
+
+
+function buildScroller(){
 	
-	$("div#makeMeScrollable2").smoothDivScroll({
-		autoScrollingMode: "onStart",
-		autoScrollingDirection: "endlessLoopLeft",
-		hotSpotScrolling: false,
-		touchScrolling: false,
-		manualContinuousScrolling: true,
-		mousewheelScrolling: false,
-		autoScrollingStep: 4,
-		mousewheelScrollingStep: 90
+	$(document).ready(function () {
+		$("div#makeMeScrollable").smoothDivScroll({
+			autoScrollingMode: "onStart",
+			autoScrollingDirection: "endlessLoopRight",
+			hotSpotScrolling: false,
+			touchScrolling: false,
+			manualContinuousScrolling: true,
+			mousewheelScrolling: false,
+			autoScrollingStep: 5,
+			mousewheelScrollingStep: 90
+		});
+
+		$("div#makeMeScrollable2").smoothDivScroll({
+			autoScrollingMode: "onStart",
+			autoScrollingDirection: "endlessLoopLeft",
+			hotSpotScrolling: false,
+			touchScrolling: false,
+			manualContinuousScrolling: true,
+			mousewheelScrolling: false,
+			autoScrollingStep: 4,
+			mousewheelScrollingStep: 90
+		});
 	});
+
+	console.log("Scrollers Started");
 }
 
+function stopScroller(){
+	$("#makeMeScrollable").smoothDivScroll("stopAutoScrolling");
+	$("#makeMeScrollable2").smoothDivScroll("stopAutoScrolling");	
+}
+
+function startScroller(){
+	$("#makeMeScrollable").smoothDivScroll("startAutoScrolling");
+	$("#makeMeScrollable2").smoothDivScroll("startAutoScrolling");	
+}
 /*$( "#makeMeScrollable" ).mousedown(function() {
   console.log("Click");
   $("#makeMeScrollable").smoothDivScroll("stopAutoScrolling");
