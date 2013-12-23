@@ -10,7 +10,7 @@ var direction = false;
 	
 //Cycle the text at the top of the window
 $("#tips").cycle({fx:"scrollUp"});
-	
+
 
 
 //Load a single page from DB, rezize images to fit, and move img src to backgorund of div..
