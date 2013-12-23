@@ -76,6 +76,7 @@ function shipclick(){
 		$("#container").removeClass("active");
 		$(".ship_section").addClass("nomargin");
 		loadSingle(id);
+		console.log(id);
 	}
 }
 
@@ -147,7 +148,7 @@ $(".content").load(url, function(){
 		
 		imgLoadCnt++;
 		console.log("Image " + imgLoadCnt + " Loaded.");
-		if (imgLoadCnt == 10) {
+		if (imgLoadCnt == 20) {
 			console.log("Start Scroller");
 			buildScroller();
 		}
