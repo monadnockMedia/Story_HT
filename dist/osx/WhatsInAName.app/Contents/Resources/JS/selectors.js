@@ -69,7 +69,7 @@ function shipclick(){
 	if(!scrolling && curScreen == 1){
 		console.log("shipclick");
 		$("#tips").animate({opacity:0}, 150, function() {});
-		$("#thumbnail").animate({opacity:1}, 150, function() {});
+		$("#ADA").animate({opacity:1}, 150, function() {});
 		$("#makeMeScrollable").animate({opacity:0}, 150, function() {});
 		$("#makeMeScrollable2").animate({opacity:0}, 150, function() {});
 		curScreen = 2;
@@ -106,7 +106,7 @@ $("body").on('click',"#close",function(){
 	$("#tips").animate({opacity:1}, 150, function() {});
 	$("#makeMeScrollable").animate({opacity:1}, 150, function() {});
 	$("#makeMeScrollable2").animate({opacity:1}, 150, function() {});
-	$("#thumbnail").animate({opacity:0}, 150, function() {});
+	$("#ADA").animate({opacity:0}, 150, function() {});
 	$("#footer").find("p").remove();
 	$("#lightbox").removeClass("active");
 	$("#container").addClass("active");
@@ -161,8 +161,6 @@ $(".content").load(url, function(){
 
 function buildScroller(){
 //	window.setTimeout(function(){
-
-
 		$("div#makeMeScrollable").smoothDivScroll({
 			autoScrollingMode: "onStart",
 			autoScrollingDirection: "endlessLoopRight",

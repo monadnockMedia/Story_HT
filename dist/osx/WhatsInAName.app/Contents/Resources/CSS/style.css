@@ -160,8 +160,8 @@ p {
 }
 h3.arrNext {
 	position:absolute;
-	top:135;
-	left:625;
+	top:50;
+	left:675;
 	width: 2em;
 	height: 2em;
 	line-height: 2em;
@@ -176,8 +176,8 @@ h3.arrNext:active{
 }
 h3.arrPrev {
 	position:absolute;
-	top:135;
-	left:23;
+	top:50;
+	left:-396;
 	width: 2em;
 	height: 2em;
 	line-height: 2em;
@@ -311,16 +311,31 @@ svg {
 .bodytext {
 	height:550px;
 }
-#ada {
+#ADA {
+	position:absolute;
+	pointer-events:all;
 	width:75px;
 	height:75px;
+	border-radius: 0.2em;
+	background-color: #5ca0ae;
+	-webkit-box-shadow: inset 0 0 0.125em #000000, 0.125em 0.125em 0.25em rgba(37, 69, 76, 0.5), inset 0.25em 0.25em 0.5em rgba(255, 255, 255, 0.5), inset -0.25em -0.25em 0.5em rgba(0, 0, 0, 0.2);
+	-webkit-text-shadow: 0.05em 0.05em 0.05em rgba(255, 255, 255, 0.5);
+	padding:15px;
+	padding-left:20px;
+	left:1110px;
+	top:840px;
+	z-index:99;
+	opacity:0;
+}
+#ADA:active {
+	background-color: #98CCD6;
 }
 #close{
 	padding-top:10px;
 	padding-left:45px;
 	position:absolute;
-	top:665px;
-	left:142px;
+	top:765px;
+	left:70px;
 	width:201px;
 	height:81px;
 	font-size:54px;
