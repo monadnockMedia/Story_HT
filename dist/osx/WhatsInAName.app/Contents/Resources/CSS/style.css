@@ -149,7 +149,7 @@ p {
 }
 #lightbox .single_section {
   position:absolute;
-  top:510px;
+  top:540px;
   left:455px;
 }
 #lightbox .single_section .ship_section {
@@ -300,9 +300,13 @@ svg {
 }
 .floatRight {
 	top:50px;
+	padding:10px;
 	position:absolute;
 	left:475px;
 	width:700px;
+	background: rgba(71, 132, 144, 0.5);
+	border-radius: .25em .25em .25em .25em;
+	border: 2px rgba(0, 0, 0, 0.2) solid;
 }
 .bodytext {
 	height:550px;
@@ -315,7 +319,7 @@ svg {
 	padding-top:10px;
 	padding-left:45px;
 	position:absolute;
-	top:635px;
+	top:665px;
 	left:142px;
 	width:201px;
 	height:81px;

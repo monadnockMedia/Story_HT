@@ -1,4 +1,4 @@
-var url = "http://server.local:8080/story"
+var url = "http://monadnock.or.gs:8080/story"
 var max = 9;
 var scrolling = false;
 //$.fx.interval = 40;	
@@ -7,6 +7,7 @@ var currentID;
 var art;
 var curScreen = 1;	
 var direction = false;
+var imgLoadCnt = 0;
 	
 //Cycle the text at the top of the window
 $("#tips").cycle({fx:"scrollUp"});
@@ -15,9 +16,9 @@ $("#tips").cycle({fx:"scrollUp"});
 
 //Load a single page from DB, rezize images to fit, and move img src to backgorund of div..
 function loadSingle(_id){
-	console.log("incrementID: "+_id)
+	//console.log("incrementID: "+_id)
 	if(_id > max){	currentID = 1}else if (_id < 1){currentID = max}else{currentID = _id};
-	console.log("targetID: "+currentID);
+	//console.log("targetID: "+currentID);
 
 	var id_url = url+"/"+currentID;
 	
@@ -76,6 +77,7 @@ function shipclick(){
 		$("#container").removeClass("active");
 		$(".ship_section").addClass("nomargin");
 		loadSingle(id);
+		console.log(id);
 	}
 }
 
@@ -117,7 +119,7 @@ $(".content").load(url, function(){
 //	var maxWidth = $(this).width()/3-2*pad;
 //	var maxHeight = $(this).height()/5;
 	var maxWidth = 500; //367
-	var imgLoadCnt = 0;
+	
 	
 	console.log(".content load")
 	
@@ -147,17 +149,20 @@ $(".content").load(url, function(){
 		
 		imgLoadCnt++;
 		console.log("Image " + imgLoadCnt + " Loaded.");
-		if (imgLoadCnt == 10) {
-			console.log("Start Scroller");
+		if (imgLoadCnt == 40) {
+			console.log("Time Out");
 			buildScroller();
+			// 
+
+			
 		}
 	});
 });
 
-
 function buildScroller(){
-	
-	$(document).ready(function () {
+//	window.setTimeout(function(){
+
+
 		$("div#makeMeScrollable").smoothDivScroll({
 			autoScrollingMode: "onStart",
 			autoScrollingDirection: "endlessLoopRight",
@@ -179,19 +184,21 @@ function buildScroller(){
 			autoScrollingStep: 4,
 			mousewheelScrollingStep: 90
 		});
-	});
+		
+		console.log("Scrollers Started");
+//	},0);
 
-	console.log("Scrollers Started");
+	
 }
 
 function stopScroller(){
-	$("#makeMeScrollable").smoothDivScroll("stopAutoScrolling");
-	$("#makeMeScrollable2").smoothDivScroll("stopAutoScrolling");	
+	$("div#makeMeScrollable").smoothDivScroll("stopAutoScrolling");
+	$("div#makeMeScrollable2").smoothDivScroll("stopAutoScrolling");	
 }
 
 function startScroller(){
-	$("#makeMeScrollable").smoothDivScroll("startAutoScrolling");
-	$("#makeMeScrollable2").smoothDivScroll("startAutoScrolling");	
+	$("div#makeMeScrollable").smoothDivScroll("startAutoScrolling");
+	$("div#makeMeScrollable2").smoothDivScroll("startAutoScrolling");	
 }
 /*$( "#makeMeScrollable" ).mousedown(function() {
   console.log("Click");
