@@ -32,7 +32,7 @@ function loadSingle(_id){
 				
 				var imgsrc = this.src;
 				var bgStr = String("url("+imgsrc+")");
-					var newCss = {};
+				var newCss = {};
 				newCss["background-image"] = bgStr;
 				console.log("resizing single images");
 				var maxWidth = 450;
@@ -47,12 +47,10 @@ function loadSingle(_id){
 				var high = imgHeight*scale;
 				newCss.height = high/1.1; //1.1
 				newCss.width = wide;
-	//			$(this).css(newCss);
-	//			$(this).parent().width(wide);
+
 				var line = String(wide)+"px "+String(high)+"px";
 				newCss["background-size"] = line;
-	//			newCss.height = high;
-	//			newCss.width = wide;
+
 				newCss.visibility = "visible";
 				newCss.opacity = "1";
 				$(this).parent().css(newCss);
@@ -113,55 +111,60 @@ $("body").on('click',"#close",function(){
 });
 
 
-//loads content for "gallery", resizing images and moving them to the background.
-$(".content").load(url, function(){
-//	pad = parseInt($(".ship_section").css('margin'));
-//	var maxWidth = $(this).width()/3-2*pad;
-//	var maxHeight = $(this).height()/5;
-	var maxWidth = 500; //367
-	
-	
-	console.log(".content load")
-	
-	$("img").load(function(i){
-		var newCss = {};
-		var imgsrc = this.src;
-		var bgStr = String("url("+imgsrc+")");
-		newCss["background-image"] = bgStr;
-		
 
-		
-		newCss.width = maxWidth ;
-		var thisWidth = $(this).width();
-		var scale = maxWidth / thisWidth;
-		
-		
-		var newHeight = scale*$(this).height();
-		newCss.height = newHeight;
-		var line = String(maxWidth)+"px "+String(newHeight)+"px";
-		
-		newCss["background-size"] = line;
-		
-		newCss.visibility = "visible";
-		newCss.opacity = "1";
-		$(this).parent().css(newCss);
-		$(this).remove();
-		
-		imgLoadCnt++;
-		console.log("Image " + imgLoadCnt + " Loaded.");
-		if (imgLoadCnt == 40) {
-			console.log("Time Out");
-			buildScroller();
-			// 
+var init = function(){
+	console.log("init")
+	//loads content for "gallery", resizing images and moving them to the background.
+	$(".content").load(url, function(){
 
-			
-		}
+		var maxWidth = 500; //367
+
+
+		console.log(".content load")
+
+		$("img").load(function(i){
+			var newCss = {};
+			var imgsrc = this.src;
+			var bgStr = String("url("+imgsrc+")");
+			newCss["background-image"] = bgStr;
+
+
+
+			newCss.width = maxWidth ;
+			var thisWidth = $(this).width();
+			var scale = maxWidth / thisWidth;
+
+
+			var newHeight = scale*$(this).height();
+			newCss.height = newHeight;
+			var line = String(maxWidth)+"px "+String(newHeight)+"px";
+
+			newCss["background-size"] = line;
+
+			newCss.visibility = "visible";
+			newCss.opacity = "1";
+			$(this).parent().css(newCss);
+			$(this).remove();
+			imgLoadCnt++;
+			console.log("Image " + imgLoadCnt + " Loaded.");
+			if (imgLoadCnt == 40) {
+				console.log("Time Out");
+				
+				$(".content").redraw();
+				buildScroller();
+
+
+			}
+		});
 	});
-});
+	
+}
+$(document).ready(init);
 
 function buildScroller(){
 //	window.setTimeout(function(){
-		$("div#makeMeScrollable").smoothDivScroll({
+		$("#makeMeScrollable").redraw();
+		$("#makeMeScrollable.top").smoothDivScroll({
 			autoScrollingMode: "onStart",
 			autoScrollingDirection: "endlessLoopRight",
 			hotSpotScrolling: false,
@@ -172,7 +175,7 @@ function buildScroller(){
 			mousewheelScrollingStep: 90
 		});
 
-		$("div#makeMeScrollable2").smoothDivScroll({
+		$("#makeMeScrollable.bottom").smoothDivScroll({
 			autoScrollingMode: "onStart",
 			autoScrollingDirection: "endlessLoopLeft",
 			hotSpotScrolling: false,
@@ -190,14 +193,18 @@ function buildScroller(){
 }
 
 function stopScroller(){
-	$("div#makeMeScrollable").smoothDivScroll("stopAutoScrolling");
-	$("div#makeMeScrollable2").smoothDivScroll("stopAutoScrolling");	
+	$("#makeMeScrollable").smoothDivScroll("stopAutoScrolling");
 }
 
 function startScroller(){
-	$("div#makeMeScrollable").smoothDivScroll("startAutoScrolling");
-	$("div#makeMeScrollable2").smoothDivScroll("startAutoScrolling");	
+	$("#makeMeScrollable").smoothDivScroll("startAutoScrolling");
 }
+
+$.fn.redraw = function(){
+  $(this).each(function(){
+    var redraw = this.offsetHeight;
+  });
+};
 /*$( "#makeMeScrollable" ).mousedown(function() {
   console.log("Click");
   $("#makeMeScrollable").smoothDivScroll("stopAutoScrolling");
