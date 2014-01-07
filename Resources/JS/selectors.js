@@ -102,7 +102,7 @@ $('body').on('click',".arrNext", function (){
 $("body").on('click',"#close",function(){
 	curScreen = 1;
 	$("#tips").animate({opacity:1}, 150, function() {});
-	$("#makeMeScrollable").animate({opacity:1}, 150, function() {});``
+	$("#makeMeScrollable").animate({opacity:1}, 150, function() {});
 	$("#ADA").animate({opacity:0}, 150, function() {});
 	$("#footer").find("p").remove();
 	$("#lightbox").removeClass("active");
