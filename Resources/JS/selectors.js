@@ -68,8 +68,8 @@ function shipclick(){
 		console.log("shipclick");
 		$("#tips").animate({opacity:0}, 150, function() {});
 		$("#ADA").animate({opacity:1}, 150, function() {});
-		$("#makeMeScrollable").animate({opacity:0}, 150, function() {});
-		$("#makeMeScrollable2").animate({opacity:0}, 150, function() {});
+		$("#makeMeScrollable.top").animate({opacity:0}, 150, function() {});
+		$("#makeMeScrollable.bottom").animate({opacity:0}, 150, function() {});
 		curScreen = 2;
 		var id = $(this).attr("id");
 		$("#container").removeClass("active");
@@ -102,7 +102,8 @@ $('body').on('click',".arrNext", function (){
 $("body").on('click',"#close",function(){
 	curScreen = 1;
 	$("#tips").animate({opacity:1}, 150, function() {});
-	$("#makeMeScrollable").animate({opacity:1}, 150, function() {});
+	$("#makeMeScrollable.top").animate({opacity:1}, 150, function() {});
+	$("#makeMeScrollable.bottom").animate({opacity:1}, 150, function() {});
 	$("#ADA").animate({opacity:0}, 150, function() {});
 	$("#footer").find("p").remove();
 	$("#lightbox").removeClass("active");
@@ -161,8 +162,11 @@ var init = function(){
 $(document).ready(init);
 
 function buildScroller(){
+	
+	
 //	window.setTimeout(function(){
-		$("#makeMeScrollable").redraw();
+	//	$("#makeMeScrollable").redraw();
+		var scrollerHTML = $("#makeMeScrollable.top").html();
 		$("#makeMeScrollable.top").smoothDivScroll({
 			autoScrollingMode: "onStart",
 			autoScrollingDirection: "endlessLoopRight",
@@ -170,10 +174,17 @@ function buildScroller(){
 			touchScrolling: false,
 			manualContinuousScrolling: true,
 			mousewheelScrolling: false,
-			autoScrollingStep: 5,
-			mousewheelScrollingStep: 90
+			autoScrollingStep: 10,
+			autoScrollingInterval: 10,
+			getContentOnLoad: { 
+						method: "getHtmlContent",
+						content: scrollerHTML,
+						manipulationMethod: "replace"
+					}
 		});
-
+		
+	
+		var scrollerHTML = $("#makeMeScrollable.bottom").html();
 		$("#makeMeScrollable.bottom").smoothDivScroll({
 			autoScrollingMode: "onStart",
 			autoScrollingDirection: "endlessLoopLeft",
@@ -181,22 +192,36 @@ function buildScroller(){
 			touchScrolling: false,
 			manualContinuousScrolling: true,
 			mousewheelScrolling: false,
-			autoScrollingStep: 4,
-			mousewheelScrollingStep: 90
+			autoScrollingStep: 10,
+			autoScrollingInterval: 10,
+			getContentOnLoad: { 
+						method: "getHtmlContent",
+						content: scrollerHTML,
+						manipulationMethod: "replace"
+					}
 		});
 		
 		console.log("Scrollers Started");
 //	},0);
+// 
+//recalcScrollableArea();
+startScroller();
 
 	
 }
 
-function stopScroller(){
+function stopScroller(){ 
 	$("#makeMeScrollable").smoothDivScroll("stopAutoScrolling");
 }
 
 function startScroller(){
-	$("#makeMeScrollable").smoothDivScroll("startAutoScrolling");
+	$("#makeMeScrollable.top").smoothDivScroll("startAutoScrolling");
+	$("#makeMeScrollable.bottom").smoothDivScroll("startAutoScrolling");
+}
+
+function recalcScrollableArea(){
+	$("#makeMeScrollable.top").smoothDivScroll("recalculateScrollableArea");
+	$("#makeMeScrollable.bottom").smoothDivScroll("recalculateScrollableArea");
 }
 
 $.fn.redraw = function(){
