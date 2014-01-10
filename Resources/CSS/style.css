@@ -82,7 +82,9 @@ p {
 .ship_section nomargin {
 	margin:0px;
 }
-
+.ship {
+	font-style:italic;
+}
 .ship_section img {
   visibility: visible;
   z-index: -1;
@@ -216,12 +218,14 @@ h3.arrPrev:active{
   line-height: 32px;
   font-size: 32px;
   width: auto;
+  font-family: times;
 }
 #footer i {
   display: inline;
   line-height: 32px;
   font-size: 32px;
   width: auto;
+  font-family: times;
 }
 #thumbnail {
 	position:absolute;
@@ -243,13 +247,21 @@ h3.arrPrev:active{
 	background: linear-gradient(to bottom,  rgba(71,132,144,0.5) 52%,rgba(71,132,144,0.5) 72%,rgba(71,132,144,0.38) 79%,rgba(0,0,0,0) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80478490', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 }
-#footer,
+
 #header {
   /*box-shadow: 1px 1px 4px black;*/
   color: white;
   height: 128px;
   font-family: uni_con;
   margin: 0;
+  /*background: rgba(71, 132, 144, 0.5);*/
+}
+#footer {
+  /*box-shadow: 1px 1px 4px black;*/
+  color: white;
+  height: 128px;
+  margin: 0;
+  font-family: times;
   /*background: rgba(71, 132, 144, 0.5);*/
 }
 #footer ul,
@@ -304,7 +316,7 @@ svg {
 	position:absolute;
 	left:475px;
 	width:700px;
-	background: rgba(71, 132, 144, 0.5);
+	background: rgba(71, 132, 144, 0.75);
 	border-radius: .25em .25em .25em .25em;
 	border: 2px rgba(0, 0, 0, 0.2) solid;
 }

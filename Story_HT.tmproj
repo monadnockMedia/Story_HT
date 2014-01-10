@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Resources/CSS/style.css</string>
+	<string>Resources/JS/selectors.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,59 +18,45 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>209</integer>
+	<integer>205</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Resources/CSS/smoothDivScroll.css</key>
+		<key>Resources/JS/jquery.smoothDivScroll-1.3.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>27</integer>
+				<integer>106</integer>
 				<key>line</key>
-				<integer>14</integer>
+				<integer>540</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>Resources/CSS/style.css</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>27</integer>
-				<key>line</key>
-				<integer>330</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>285</integer>
 		</dict>
 		<key>Resources/JS/selectors.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>8</integer>
+				<integer>16</integer>
 				<key>line</key>
-				<integer>108</integer>
+				<integer>75</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>78</integer>
+			<integer>14</integer>
 		</dict>
 		<key>Resources/index.html</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>8</integer>
+				<integer>73</integer>
 				<key>line</key>
-				<integer>42</integer>
+				<integer>9</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -82,12 +68,11 @@
 	<array>
 		<string>Resources/index.html</string>
 		<string>Resources/JS/selectors.js</string>
-		<string>Resources/CSS/style.css</string>
-		<string>Resources/CSS/smoothDivScroll.css</string>
+		<string>Resources/JS/jquery.smoothDivScroll-1.3.js</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{745, 74}, {1178, 984}}</string>
+	<string>{{771, 66}, {1149, 992}}</string>
 </dict>
 </plist>

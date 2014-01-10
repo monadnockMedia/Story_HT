@@ -8,6 +8,48 @@ var art;
 var curScreen = 1;	
 var direction = false;
 var imgLoadCnt = 0;
+
+var timer;
+
+
+
+$(document.body).click(function(e) {
+	userStarted();
+})
+
+function restart() {
+	document.location.href='';
+}
+
+function promptIdleUser() {   
+    clearInterval(timer);
+  	timer = setInterval(restart, 10000);
+
+	$( "#dialog" ).dialog({
+		height:250,
+		width: 500,
+		modal: true,
+		resizable: false,
+		show: {
+			effect: "blind", duration: 250
+		},
+		hide: {
+			effect: "blind", duration: 250
+		},
+		buttons: {
+		  	"Yes": function()
+			{
+		    	$( this ).dialog( "close" );
+				userStarted();
+		  	}
+		}
+	}); // Shows the idle alert box.
+}
+
+function userStarted() {
+	clearInterval(timer);
+	timer = setInterval(promptIdleUser, 120000); // 30000
+}
 	
 //Cycle the text at the top of the window
 $("#tips").cycle({fx:"scrollUp"});
@@ -16,9 +58,7 @@ $("#tips").cycle({fx:"scrollUp"});
 
 //Load a single page from DB, rezize images to fit, and move img src to backgorund of div..
 function loadSingle(_id){
-	//console.log("incrementID: "+_id)
 	if(_id > max){	currentID = 1}else if (_id < 1){currentID = max}else{currentID = _id};
-	//console.log("targetID: "+currentID);
 
 	var id_url = url+"/"+currentID;
 	
@@ -34,7 +74,6 @@ function loadSingle(_id){
 				var bgStr = String("url("+imgsrc+")");
 				var newCss = {};
 				newCss["background-image"] = bgStr;
-				console.log("resizing single images");
 				var maxWidth = 450;
 				var maxHeight = 525;
 
@@ -65,7 +104,6 @@ $('body').on('click',".ship_section", shipclick);
 
 function shipclick(){
 	if(!scrolling && curScreen == 1){
-		console.log("shipclick");
 		$("#tips").animate({opacity:0}, 150, function() {});
 		$("#ADA").animate({opacity:1}, 150, function() {});
 		$("#makeMeScrollable.top").animate({opacity:0}, 150, function() {});
@@ -75,7 +113,6 @@ function shipclick(){
 		$("#container").removeClass("active");
 		$(".ship_section").addClass("nomargin");
 		loadSingle(id);
-		console.log(id);
 	}
 }
 
@@ -87,14 +124,14 @@ function shipclick(){
 $('body').on('click',".arrPrev", function (){
 	var dir = ($(this).attr("id") == "prev") ? -1 : 1;
     var id = parseInt(currentID) + dir;
-	console.log("changing page, direction = "+dir+" next ID = "+id)
+	//console.log("changing page, direction = "+dir+" next ID = "+id)
 	loadSingle(id);
 });
 
 $('body').on('click',".arrNext", function (){
 	var dir = ($(this).attr("id") == "prev") ? -1 : 1;
     var id = parseInt(currentID) + dir;
-	console.log("changing page, direction = "+dir+" next ID = "+id)
+	//console.log("changing page, direction = "+dir+" next ID = "+id)
 	loadSingle(id);
 });
 
@@ -113,14 +150,10 @@ $("body").on('click',"#close",function(){
 
 
 var init = function(){
-	console.log("init")
 	//loads content for "gallery", resizing images and moving them to the background.
 	$(".content").load(url, function(){
 
 		var maxWidth = 500; //367
-
-
-		console.log(".content load")
 
 		$("img").load(function(i){
 			var newCss = {};
@@ -146,10 +179,7 @@ var init = function(){
 			$(this).parent().css(newCss);
 			$(this).remove();
 			imgLoadCnt++;
-			console.log("Image " + imgLoadCnt + " Loaded.");
-			if (imgLoadCnt == 40) {
-				console.log("Time Out");
-				
+			if (imgLoadCnt == 40) {				
 				$(".content").redraw();
 				buildScroller();
 
@@ -200,8 +230,6 @@ function buildScroller(){
 						manipulationMethod: "replace"
 					}
 		});
-		
-		console.log("Scrollers Started");
 //	},0);
 // 
 //recalcScrollableArea();
@@ -229,22 +257,3 @@ $.fn.redraw = function(){
     var redraw = this.offsetHeight;
   });
 };
-/*$( "#makeMeScrollable" ).mousedown(function() {
-  console.log("Click");
-  $("#makeMeScrollable").smoothDivScroll("stopAutoScrolling");
-});
-
-$( "#makeMeScrollable" ).mouseup(function() {
-  console.log("Un-Click");
-  $("#makeMeScrollable").smoothDivScroll("startAutoScrolling");
-});
-
-$( "#makeMeScrollable2" ).mousedown(function() {
-  console.log("Click");
-  $("#makeMeScrollable2").smoothDivScroll("stopAutoScrolling");
-});
-
-$( "#makeMeScrollable2" ).mouseup(function() {
-  console.log("Un-Click");
-  $("#makeMeScrollable2").smoothDivScroll("startAutoScrolling");
-});*/
