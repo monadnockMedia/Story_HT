@@ -1,5 +1,5 @@
 var url = "http://monadnock.or.gs:8080/story"
-var max = 9;
+var max = 10;
 var scrolling = false;
 //$.fx.interval = 40;	
 

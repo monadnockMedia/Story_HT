@@ -9,13 +9,13 @@
   src: url('../FONT/2868F6_1_0.eot?#iefix') format('embedded-opentype'), url('../FONT/2868F6_1_0.woff') format('woff'), url('../FONT/2868F6_1_0.ttf') format('truetype');
 }
 @font-face {
-  font-family: uni;
-  src: url('../FONT/univers_65_bold-webfont.svg') format('svg');
+  font-family: "uni";
+  src: url('../FONT/univers_65_bold-webfont.svg#univers_65_boldregular') format('svg');
   font-style: normal;
 }
 @font-face {
-  font-family: uni_con;
-  src: url('../FONT/univers_condensed_medium-webfont.svg') format('svg');
+  font-family: "univers_condensedmedium";
+  src: url('../FONT/univers_condensed_medium-webfont.svg#univers_condensedmedium') format('svg');
   font-style: normal;
 }
 body,
@@ -48,7 +48,7 @@ h1 {
   padding-left: .5em;
 }
 p {
-  font-family: uni_con;
+  font-family: "univers_condensedmedium";
   padding: .5em;
 }
 .ship_section {
@@ -252,7 +252,7 @@ h3.arrPrev:active{
   /*box-shadow: 1px 1px 4px black;*/
   color: white;
   height: 128px;
-  font-family: uni_con;
+  font-family: "univers_condensedmedium";
   margin: 0;
   /*background: rgba(71, 132, 144, 0.5);*/
 }
