@@ -8,6 +8,13 @@
   src: url('../FONT/2868F6_1_0.eot');
   src: url('../FONT/2868F6_1_0.eot?#iefix') format('embedded-opentype'), url('../FONT/2868F6_1_0.woff') format('woff'), url('../FONT/2868F6_1_0.ttf') format('truetype');
 }
+
+/*@font-face {
+  font-family: "oct_std";
+  src: url('../FONT/2868F6_1_0.svg') format('svg');
+  font-style: normal;
+}*/
+
 @font-face {
   font-family: "uni";
   src: url('../FONT/univers_65_bold-webfont.svg#univers_65_boldregular') format('svg');
@@ -44,7 +51,7 @@ body {
   font-size: 24pt;
 }
 h1 {
-  font-family: oct_std;
+  font-family: times;
   padding-left: .5em;
 }
 p {
@@ -61,7 +68,7 @@ p {
   display: inline-block;
   color: white;
   text-shadow: 0 0 1px #000000, 0.1em 0.1em 0.1em #000000, -0.05em -0.05em 0.05em #47724f;
-/*  -webkit-box-ordinal-group: 1;
+/*-webkit-box-ordinal-group: 1;
   -moz-box-ordinal-group: 1;
   -webkit-order: 0;
   -ms-flex-order: 0;

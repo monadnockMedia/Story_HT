@@ -205,8 +205,8 @@ function buildScroller(){
 			touchScrolling: false,
 			manualContinuousScrolling: true,
 			mousewheelScrolling: false,
-			autoScrollingStep: 10,
-			autoScrollingInterval: 10,
+			autoScrollingStep: 5,
+			autoScrollingInterval: 30,
 			getContentOnLoad: { 
 						method: "getHtmlContent",
 						content: scrollerHTML,
@@ -223,8 +223,8 @@ function buildScroller(){
 			touchScrolling: false,
 			manualContinuousScrolling: true,
 			mousewheelScrolling: false,
-			autoScrollingStep: 10,
-			autoScrollingInterval: 10,
+			autoScrollingStep: 5,
+			autoScrollingInterval: 30,
 			getContentOnLoad: { 
 						method: "getHtmlContent",
 						content: scrollerHTML,
