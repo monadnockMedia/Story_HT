@@ -9,6 +9,8 @@ var curScreen = 1;
 var direction = false;
 var imgLoadCnt = 0;
 
+var tapSnd = Ti.Media.createSound('SOUND/tap.wav');
+
 var timer;
 
 
@@ -59,6 +61,7 @@ $("#tips").cycle({fx:"scrollUp"});
 //Load a single page from DB, rezize images to fit, and move img src to backgorund of div..
 function loadSingle(_id){
 	console.log("loadSingle("+_id+");");
+	tapSnd.play();
 	if(_id > max){	currentID = 1}else if (_id < 1){currentID = max}else{currentID = _id};
 
 	var id_url = url+"/"+currentID;
@@ -123,6 +126,7 @@ function shipclick(){
 
 //click handler for arrows in individual section
 $('body').on('click',".arrPrev", function (){
+
 	var dir = ($(this).attr("id") == "prev") ? -1 : 1;
     var id = parseInt(currentID) + dir;
 	//console.log("changing page, direction = "+dir+" next ID = "+id)
@@ -138,6 +142,7 @@ $('body').on('click',".arrNext", function (){
 
 //click handler for close "X" to close ind	ividual window.
 $("body").on('click',"#close",function(){
+	tapSnd.play();
 	curScreen = 1;
 	$("#tips").animate({opacity:1}, 150, function() {});
 	$("#makeMeScrollable.top").animate({opacity:1}, 150, function() {});
@@ -205,7 +210,7 @@ function buildScroller(){
 			touchScrolling: false,
 			manualContinuousScrolling: true,
 			mousewheelScrolling: false,
-			autoScrollingStep: 5,
+			autoScrollingStep: 10,
 			autoScrollingInterval: 30,
 			getContentOnLoad: { 
 						method: "getHtmlContent",
@@ -223,7 +228,7 @@ function buildScroller(){
 			touchScrolling: false,
 			manualContinuousScrolling: true,
 			mousewheelScrolling: false,
-			autoScrollingStep: 5,
+			autoScrollingStep: 10,
 			autoScrollingInterval: 30,
 			getContentOnLoad: { 
 						method: "getHtmlContent",
