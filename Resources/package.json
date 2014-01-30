@@ -1,0 +1,18 @@
+{
+  "main": "index.html",
+  "name": "story_behind_a_name",
+  "description": "NGLApp",
+  "version": "0.1.0",
+  "keywords": [ "monadnock", "node-webkit" ],
+  "window": {
+    "title": "Story Behind a Name",
+    "toolbar": true,
+    "frame": false,
+    "width": 1280,
+    "height": 1024
+  },
+  "webkit": {
+    "plugin": true,
+	"java": true
+  }
+}

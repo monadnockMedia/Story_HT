@@ -9,7 +9,7 @@ var curScreen = 1;
 var direction = false;
 var imgLoadCnt = 0;
 
-var tapSnd = Ti.Media.createSound('SOUND/tap.wav');
+//var tapSnd = Ti.Media.createSound('SOUND/tap.wav');
 
 var timer;
 
@@ -61,7 +61,7 @@ $("#tips").cycle({fx:"scrollUp"});
 //Load a single page from DB, rezize images to fit, and move img src to backgorund of div..
 function loadSingle(_id){
 	console.log("loadSingle("+_id+");");
-	tapSnd.play();
+	//tapSnd.play();
 	if(_id > max){	currentID = 1}else if (_id < 1){currentID = max}else{currentID = _id};
 
 	var id_url = url+"/"+currentID;
@@ -142,7 +142,7 @@ $('body').on('click',".arrNext", function (){
 
 //click handler for close "X" to close ind	ividual window.
 $("body").on('click',"#close",function(){
-	tapSnd.play();
+	//tapSnd.play();
 	curScreen = 1;
 	$("#tips").animate({opacity:1}, 150, function() {});
 	$("#makeMeScrollable.top").animate({opacity:1}, 150, function() {});
@@ -210,7 +210,7 @@ function buildScroller(){
 			touchScrolling: false,
 			manualContinuousScrolling: true,
 			mousewheelScrolling: false,
-			autoScrollingStep: 10,
+			autoScrollingStep: 4,
 			autoScrollingInterval: 30,
 			getContentOnLoad: { 
 						method: "getHtmlContent",
@@ -228,7 +228,7 @@ function buildScroller(){
 			touchScrolling: false,
 			manualContinuousScrolling: true,
 			mousewheelScrolling: false,
-			autoScrollingStep: 10,
+			autoScrollingStep: 4,
 			autoScrollingInterval: 30,
 			getContentOnLoad: { 
 						method: "getHtmlContent",
