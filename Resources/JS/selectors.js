@@ -1,4 +1,4 @@
-var url = "http://monadnock.or.gs:8080/story"
+var url = "http://127.0.0.1:8080/story"
 var max = 10;
 var scrolling = false;
 //$.fx.interval = 40;	
