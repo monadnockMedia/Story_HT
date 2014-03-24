@@ -263,3 +263,47 @@ $.fn.redraw = function(){
     var redraw = this.offsetHeight;
   });
 };
+//
+
+//
+var nwKiosk = function(){
+	var mouseHidden =true;
+	var kioskMode=true;
+	var gui =require('nw.gui');
+	//setInterval(focus_window,5000);
+
+	var win = gui.Window.get();
+	
+	this.setup = function(){$(document).keypress(function(d){
+		switch(d.keyCode)
+		{
+		case 107:
+		  (kioskMode) ? win.enterKioskMode() : win.leaveKioskMode() ;
+		kioskMode = !kioskMode;
+		  break;
+		case 109:
+		  (mouseHidden) ? $("*").css("cursor","none") : $("*").css("cursor","pointer") ;
+		mouseHidden=!mouseHidden;
+		  break;
+	
+		}
+
+
+	})}
+	this.hideMouse = function(){
+		$("*").css("cursor","none")
+	}
+	this.showMouse = function(){
+		$("*").css("cursor","pointer")
+	}
+	this.win = win;
+	
+}
+$(function(){
+	
+	nwK = new nwKiosk();
+	
+	nwK.setup();
+	nwK.hideMouse();
+	nwK.win.enterKioskMode();	
+})

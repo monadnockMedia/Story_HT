@@ -6,8 +6,8 @@
   "keywords": [ "monadnock", "node-webkit" ],
   "window": {
     "title": "Story Behind a Name",
-    "toolbar": true,
-    "frame": false,
+    "toolbar": false,
+    "frame": false 
     "width": 1280,
     "height": 1024
   },

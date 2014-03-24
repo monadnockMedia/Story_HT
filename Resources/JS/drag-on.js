@@ -18,7 +18,7 @@ $(function () {
         DragOn: function (S, opt) { /* Scroll mechanics */
             var def = {
             	exclusion : {'input': '', 'textarea': '', 'select': '', 'object':'' , 'iframe':'' , 'id':'#gmap,#map-canvas'},
-            	cursor : 'all-scroll',
+            	cursor : 'inherit',
             	easing : 'true'
             },Sd;
             

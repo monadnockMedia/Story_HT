@@ -10,7 +10,7 @@
 	'use strict';
 
     var DEFAULT_SETTINGS = {
-            cursor: 'move',
+            cursor: 'inherit',
             decelerate: true,
             triggerHardware: false,
             y: true,
@@ -399,7 +399,7 @@
                 attachListeners($this, settings);
                 $this
                 .addClass(ACTIVE_CLASS)
-                .css("cursor", "move");
+                .css("cursor", "inherit");
             }
         }
     };
