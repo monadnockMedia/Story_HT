@@ -8,6 +8,7 @@ var art;
 var curScreen = 1;	
 var direction = false;
 var imgLoadCnt = 0;
+var adaEnabled = false;
 
 //var tapSnd = Ti.Media.createSound('SOUND/tap.wav');
 
@@ -100,6 +101,11 @@ function loadSingle(_id){
 				$(this).remove();
 				$("#lightbox").addClass("active");
 			});
+			if (!adaEnabled) {
+				
+			} else {
+				addADA();
+			}
 	})
 }
 
@@ -269,6 +275,7 @@ $.fn.redraw = function(){
 var nwKiosk = function(){
 	var mouseHidden =true;
 	var kioskMode=true;
+	var devTools=true;
 	var gui =require('nw.gui');
 	//setInterval(focus_window,5000);
 
@@ -278,14 +285,17 @@ var nwKiosk = function(){
 		switch(d.keyCode)
 		{
 		case 107:
-		  (kioskMode) ? win.enterKioskMode() : win.leaveKioskMode() ;
-		kioskMode = !kioskMode;
+		  (kioskMode) ? win.enterKioskMode() : win.leaveKioskMode();
+		  kioskMode = !kioskMode;
 		  break;
 		case 109:
-		  (mouseHidden) ? $("*").css("cursor","none") : $("*").css("cursor","pointer") ;
-		mouseHidden=!mouseHidden;
+		  (mouseHidden) ? $("*").css("cursor","none") : $("*").css("cursor","pointer");
+	  	  mouseHidden=!mouseHidden;
 		  break;
-	
+		case 100:
+		  (devTools) ? gui.Window.get().showDevTools() : gui.Window.get().closeDevTools();
+		  devTools=!devTools;
+		  break;
 		}
 
 
@@ -304,6 +314,30 @@ $(function(){
 	nwK = new nwKiosk();
 	
 	nwK.setup();
-	nwK.hideMouse();
-	nwK.win.enterKioskMode();	
+	//nwK.hideMouse();
+	//nwK.win.enterKioskMode();	
 })
+
+$("#ADA").click(function(e) {
+	console.log("ADA Toggle");
+	if (!adaEnabled) {
+		adaEnabled = true;
+		$("#close").addClass("adaEnabled");
+		$(".floatRight").addClass("adaEnabled");
+		$("h1").addClass("adaEnabled");
+		$(".artifact").addClass("adaEnabled");
+	} else {
+		adaEnabled = false;
+		$("#close").removeClass("adaEnabled");
+		$(".floatRight").removeClass("adaEnabled");
+		$("h1").removeClass("adaEnabled");
+		$(".artifact").removeClass("adaEnabled");
+	}
+});
+
+var addADA = function() {
+	$("#close").addClass("adaEnabled");
+	$(".floatRight").addClass("adaEnabled");
+	$("h1").addClass("adaEnabled");
+	$(".artifact").addClass("adaEnabled");
+}
