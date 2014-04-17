@@ -54,6 +54,12 @@ h1 {
   font-family: times;
   padding-left: .5em;
 }
+h1.adaEnabled {
+	font-family:sans-serif;
+	background-color:black;
+	background-image:transparent;
+	color:white;
+}
 p {
   font-family: "univers_condensedmedium";
   padding: .5em;
@@ -327,6 +333,12 @@ svg {
 	border-radius: .25em .25em .25em .25em;
 	border: 2px rgba(0, 0, 0, 0.2) solid;
 }
+.floatRight.adaEnabled {
+	color:white;
+	background-color:black;
+	font-family:sans-serif;
+	font-size:22pt;
+}
 .bodytext {
 	height:550px;
 }
@@ -365,4 +377,17 @@ svg {
 }
 #close:active {
 	background-color: #98CCD6;
+}
+#close.adaEnabled {
+	color:white;
+	background-color:black;
+	font-family:sans-serif;
+}
+#close.adaEnabled:active {
+	background-color: grey;
+}
+.artifact.adaEnabled {
+	color:white;
+	background-color:black;
+	font-family:sans-serif;
 }
